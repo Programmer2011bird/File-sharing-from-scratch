@@ -1,0 +1,15 @@
+[ ] Make a websocket for sharing files
+- [ ] send a request for the file ( file name )
+- [ ] encrypt the file content
+- [ ] send the file content over websocket
+- [ ] recieve the file content on the client side and write to the disk ( on Downloads folder )
+[ ] Make a restful API FastAPI for all the utilities made with the websocket
+- [ ] Endpoint for searching for files 
+- [ ] Endpoint for fetching metadata
+- [ ] Endpoint for requesting for the file
+- [ ] Endpoint for the encrypted file content
+[ ] Maybe Flask for some minor server/client side operations
+[ ] Design the site 
+- [ ] Make html file
+- [ ] react js
+[ ] FINAL : Share this file using this project
