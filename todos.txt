@@ -1,7 +1,7 @@
 [ ] Make a websocket for sharing files
 - [x] send a request for the file ( file name )
-- [ ] encrypt the file content
-- [ ] send the file content over websocket
+- [ ] encrypt the file content ( SHA-256 )
+- [x] send the file content over websocket
 - [ ] recieve the file content on the client side and write to the disk ( on Downloads folder )
 [ ] Make a restful API FastAPI for all the utilities made with the websocket
 - [ ] Endpoint for searching for files 
