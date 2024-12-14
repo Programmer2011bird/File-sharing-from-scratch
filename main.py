@@ -1,18 +1,7 @@
 ## SERVER ##
 
-import hashlib
-from os.path import exists
+from functions import *
 import socket
-
-
-def return_file_content(fileName:str) -> str | bytes:
-    if not exists(fileName):
-        return b"File Not Found"
-
-    with open(f"{fileName}", "r+") as file:
-        CONTENT: str = str(file.read())
-
-    return CONTENT
 
 
 class server:
@@ -29,6 +18,8 @@ class server:
 
                 fileName: str = str(connection.recv(1024).decode()).split("\n")[-1]
                 content: str | bytes = return_file_content(fileName)
+
+                sha256_hash: str = calculate_SHA256(fileName)
     
                 if type(content) == bytes and content.decode() == "File Not Found":
                     print(f"[{address[0]}:{address[1]}] {fileName} -> Status : ERROR > File Not Found")
@@ -36,6 +27,7 @@ class server:
     
                 else:
                     connection.sendall(content.encode())
+                    connection.sendall(sha256_hash.encode())
                     print(f"[{address[0]}:{address[1]}] {fileName} -> Status : OK")
                     connection.close()
 
