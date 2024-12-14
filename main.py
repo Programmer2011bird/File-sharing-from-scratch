@@ -12,7 +12,9 @@ class websocket:
 
             connection, address = self.SOCKET.accept()
 
-            print(f"[{address}] {connection.recv(1024)}")
+            fileName: str = str(connection.recv(1024).decode()).split("\n")[-1]
+
+            connection.close()
 
 
 if __name__ == "__main__":
