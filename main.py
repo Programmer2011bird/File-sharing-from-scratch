@@ -19,7 +19,9 @@ class server:
                 fileName: str = str(connection.recv(1024).decode()).split("\n")[-1]
                 content: str | bytes = return_file_content(fileName)
 
-                sha256_hash: str = calculate_SHA256(fileName)
+                sha256_hash: str = calculate_SHA256_server(fileName)
+
+                print(sha256_hash)
     
                 if type(content) == bytes and content.decode() == "File Not Found":
                     print(f"[{address[0]}:{address[1]}] {fileName} -> Status : ERROR > File Not Found")
