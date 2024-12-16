@@ -11,10 +11,13 @@ class client:
             
             self.SOCKET.sendall(fileName.encode())
 
-
             CONTENT: str = self.SOCKET.recv(1024).decode()
             RECIEVED_SHA256_HASH: str = self.SOCKET.recv(1024).decode()
             CALCULATED_SHA256_HASH: str = calculate_SHA256_client(CONTENT)
+
+            # print("REC : ", RECIEVED_SHA256_HASH)
+            # print("CALC : ", CALCULATED_SHA256_HASH)
+            # print("CONTENT : ", CONTENT)
 
             if RECIEVED_SHA256_HASH == CALCULATED_SHA256_HASH:
                 print("File integrity verified")
@@ -25,7 +28,3 @@ class client:
                 print("File integrity verification failed")
 
             self.SOCKET.close()
-
-
-if __name__ == "__main__":
-    CLIENT: client = client(fileName="test.txt")
