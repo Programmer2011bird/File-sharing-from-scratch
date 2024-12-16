@@ -5,7 +5,7 @@ import os
 app = FastAPI()
 
 
-def searchForFiles(fileName:str, search_path:str):
+def searchForFiles(fileName:str, search_path:str) -> list[str]:
     results: list[str] = []
 
     for root, dir, files in os.walk(search_path):
@@ -16,10 +16,13 @@ def searchForFiles(fileName:str, search_path:str):
 
 @app.get("/file/search/{fileName}")
 async def searchFileName(fileName:str):
-    foundFiles = searchForFiles(fileName, "../testFiles")
+    foundFiles: list[str] = searchForFiles(fileName, "testFiles")
     return {"files": foundFiles}
 
 @app.get("/file/download/{fileName}")
-async def getFile(fileName:str):
+async def getFile(fileName:str) -> int:
     CLIENT: client.client = client.client(fileName=f"./testFiles/{fileName}")
+    output: int = CLIENT.main()
+
+    return output
 
