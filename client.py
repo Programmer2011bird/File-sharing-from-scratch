@@ -11,8 +11,8 @@ class client:
             
             self.SOCKET.sendall(fileName.encode())
 
-            CONTENT: str = self.SOCKET.recv(1024).decode()
-            RECIEVED_SHA256_HASH: str = self.SOCKET.recv(1024).decode()
+            SERVER_MESSAGE: str = self.SOCKET.recv(4096).decode()
+            CONTENT, RECIEVED_SHA256_HASH = SERVER_MESSAGE.split("|||")
             CALCULATED_SHA256_HASH: str = calculate_SHA256_client(CONTENT)
 
             # print("REC : ", RECIEVED_SHA256_HASH)

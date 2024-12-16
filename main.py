@@ -26,8 +26,8 @@ class server:
                     connection.close()
     
                 else:
-                    connection.sendall(content.encode())
-                    connection.sendall(sha256_hash.encode())
+                    message: str =  f"{content}|||{sha256_hash}"
+                    connection.sendall(message.encode())
                     print(f"[{address[0]}:{address[1]}] {fileName} -> Status : OK")
                     connection.close()
 
