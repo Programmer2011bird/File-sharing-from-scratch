@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, url_for
 import requests
 
 app: Flask = Flask(__name__, template_folder='../frontend')
@@ -17,7 +17,24 @@ def download(fileName) -> str:
     output: str = str(requests.get(f"http://127.0.0.1:8000/file/download/{fileName}").json())
     return f"<h1>{output}</h1>"
 
+@app.route("/search-html", methods=["GET"])
+def searchHtml():
+    return render_template('search.html')
+
+@app.route("/download-html", methods=["GET"])
+def downloadHtml():
+    return render_template('Download.html')
+
+@app.route("/search-form", methods=["GET"])
+def searchForm():
+    fileName = request.args.get('query')
+    return redirect(url_for('search', fileName=fileName))
+
+@app.route("/download-form", methods=["GET"])
+def downloadForm():
+    fileName = request.args.get('fileName')
+    return redirect(url_for('download', fileName=fileName))
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=7070, debug=True)
-

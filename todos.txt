@@ -10,6 +10,5 @@
 - [-x] Endpoint for searching the files
 - [-x] Endpoint for requesting and getting the files
 [ ] Design the site 
-- [ ] Make html file
-- [ ] react js
+- [-x] Make html file
 [ ] FINAL : Share this file using this project
