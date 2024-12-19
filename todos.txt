@@ -6,9 +6,9 @@
 [x] Make a restful API FastAPI for all the utilities made with the websocket
 - [x] Endpoint for searching for files 
 - [x] Endpoint for requesting for the file
-[ ] Maybe Flask for some minor server/client side operations
-- [-x] Endpoint for searching the files
-- [-x] Endpoint for requesting and getting the files
-[ ] Design the site 
-- [-x] Make html file
+[x] Maybe Flask for some minor server/client side operations
+- [x] Endpoint for searching the files
+- [x] Endpoint for requesting and getting the files
+[x] Design the site 
+- [x] Make html file
 [ ] FINAL : Share this file using this project

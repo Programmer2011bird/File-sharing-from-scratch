@@ -10,12 +10,12 @@ def HomePage():
 @app.route("/search/<fileName>")
 def search(fileName):
     output: dict = dict(requests.get(f"http://127.0.0.1:8000/file/search/{fileName}").json())
-    return f"<h1>{output['files']}</h1>"
+    return render_template("searchFormat.html", fileList=output['files'])
 
 @app.route("/download/<fileName>")
 def download(fileName) -> str:
     output: str = str(requests.get(f"http://127.0.0.1:8000/file/download/{fileName}").json())
-    return f"<h1>{output}</h1>"
+    return render_template("successORfail.html", output=output)
 
 @app.route("/search-html", methods=["GET"])
 def searchHtml():
