@@ -21,7 +21,7 @@ async def searchFileName(fileName:str):
 
 @app.get("/file/download/{fileName}")
 async def getFile(fileName:str) -> int:
-    CLIENT: client.client = client.client(fileName=f"./testFiles/{fileName}")
+    CLIENT: client.client = client.client(fileName=f"{fileName}")
     output: int = CLIENT.main()
 
     return output
